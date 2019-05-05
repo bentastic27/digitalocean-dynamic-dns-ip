@@ -44,8 +44,8 @@ type DOResponse struct {
 
 //GetConfig : get configuration file ~/.digitalocean-dynamic-ip.json
 func GetConfig() ClientConfig {
-	homeDirectory, err := homedir.Dir()
-	checkError(err)
+	//homeDirectory, err := homedir.Dir()
+	//checkError(err)
 	getfile, err := ioutil.ReadFile("/config/digitalocean-dynamic-ip.json")
 	checkError(err)
 	var config ClientConfig
