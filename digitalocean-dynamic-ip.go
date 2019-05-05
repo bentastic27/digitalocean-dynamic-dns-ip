@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strconv"
 
-	homedir "github.com/mitchellh/go-homedir"
+	//homedir "github.com/mitchellh/go-homedir"
 )
 
 func checkError(err error) {
@@ -46,7 +46,7 @@ type DOResponse struct {
 func GetConfig() ClientConfig {
 	homeDirectory, err := homedir.Dir()
 	checkError(err)
-	getfile, err := ioutil.ReadFile(homeDirectory + "/.digitalocean-dynamic-ip.json")
+	getfile, err := ioutil.ReadFile("/config/digitalocean-dynamic-ip.json")
 	checkError(err)
 	var config ClientConfig
 	json.Unmarshal(getfile, &config)
