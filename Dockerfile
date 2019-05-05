@@ -1,7 +1,7 @@
 FROM golang:latest
-WORKDIR /go/src/app
+WORKDIR /go/src/digitalocean-dynamic-dns-ip
 COPY . .
 RUN go get -d -v ./...
 RUN go install -v ./...
 RUN mkdir /config
-CMD ["app"]
+CMD ["digitalocean-dynamic-dns-ip"]
