@@ -1,17 +1,19 @@
-# DIGITAL OCEAN DYNAMIC IP API CLIENT
-A simple script in Go language to automatically update Digital ocean DNS records if you have a dynamic IP. Since it can be compiled on any platform, you can use it along with raspberrypi etc.
+# DIGITAL OCEAN DYNAMIC IP API CLIENT (Docker Edition)
+Forked from [anaganisk's go script](https://github.com/anaganisk/digitalocean-dynamic-dns-ip).
 
-## requirements
-Requires Git and Go for building.
-
-Requires that the record already exists in DigitalOcean's DNS so that it can be updated.
-(manually find your IP and add it to DO's DNS it will later be updated)
+A Docker container that can be used in jobs to update DNS records hosted on Digital Ocean's DNS servers.
 
 ## Usage
-```bash
-git clone https://github.com/anaganisk/digitalocean-dynamic-dns-ip.git
+
+Create a directory containing a file named `digitalocean-dynamic-ip.json`. See sample of file below. Run the container like the following:
+
 ```
-create a file ".digitalocean-dynamic-ip.json"(dot prefix to hide the file) and place it user home directory and add the following json
+docker run -v /path/to/dir/containing/file:/config digitalocean-dynamic-ip
+```
+
+Make sure you have the directory with your json file mounted to `/config` on the container.
+
+Sample JSON:
 
 ```json
 {
@@ -37,17 +39,4 @@ create a file ".digitalocean-dynamic-ip.json"(dot prefix to hide the file) and p
     }
   ]
 }
-```
-```bash
-#run
-go build digitalocean-dynamic-ip.go
-./digitalocean-dynamic-ip
-```
-You can either set this to run periodically with a cronjob or use your own method.
-```bash
-# run crontab -e
-# sample cron job task 
-
-# m h  dom mon dow   command
-*/5 * * * * /home/user/digitalocean-dynamic-dns-ip/digitalocean-dynamic-ip
 ```
