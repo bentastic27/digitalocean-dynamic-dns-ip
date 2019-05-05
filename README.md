@@ -8,7 +8,7 @@ A Docker container that can be used in jobs to update DNS records hosted on Digi
 Create a directory containing a file named `digitalocean-dynamic-ip.json`. See sample of file below. Run the container like the following:
 
 ```
-docker run -v /path/to/dir/containing/file:/config digitalocean-dynamic-ip
+docker run -v /path/to/dir/containing/file:/config bentastic27/digitalocean-dynamic-dns-ip:v1.0
 ```
 
 Make sure you have the directory with your json file mounted to `/config` on the container.
